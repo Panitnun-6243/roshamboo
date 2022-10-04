@@ -1,7 +1,10 @@
 import './home.css';
 import PurpleButton from 'renderer/components/PurpleButton/PurpleButton';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
+  const navigate = useNavigate();
+
   return (
     <div className="home-container">
       <div className="game-title-box">
@@ -11,13 +14,13 @@ export default function Home() {
         <PurpleButton
           name="Play with friend"
           handleClick={() => {
-            console.log('Button Clicked');
+            navigate('/playwithfriend');
           }}
         />
         <PurpleButton
           name="Play with computer"
           handleClick={() => {
-            console.log('Button Clicked');
+            navigate('/playwithfriend');
           }}
         />
       </div>
