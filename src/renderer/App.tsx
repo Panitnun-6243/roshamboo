@@ -9,15 +9,9 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-      <Routes>
+        <Route index element={<Home />} />
         <Route path="/playwithfriend" element={<PlayWithFriend />} />
-      </Routes>
-      <Routes>
         <Route path="/creategame" element={<CreateGame />} />
-      </Routes>
-      <Routes>
         <Route path="/playground" element={<Playground />} />
       </Routes>
     </Router>
