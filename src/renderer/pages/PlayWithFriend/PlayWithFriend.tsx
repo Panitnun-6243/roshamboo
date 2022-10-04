@@ -4,29 +4,43 @@ import GreenButton from 'renderer/components/GreenButton/GreenButton';
 
 export default function PlayWithFriend() {
   const navigate = useNavigate();
-  // temporary button for change page, you can delete it
-  function handleClick() {
-    navigate('/');
-  }
-  function handleTempNext() {
-    navigate('/creategame');
-  }
+
   return (
     <div>
-      <p>PlayWithFriend</p>
-      <button type="button" onClick={handleClick}>
-        Back
-      </button>
-      <button type="button" onClick={handleTempNext}>
-        Next
-      </button>
-      <GreenButton
-        name="Create game"
-        handleClick={() => {
-          navigate('/playwithfriend');
-        }}
-        width="370px"
-      />
+      <div className="pwf-container">
+        <p>PlayWithFriend</p>
+        <div className="play-option-container">
+          <div className="join-game">
+            <div className="room-code-title">Room code:</div>
+            <input type="text" />
+            <GreenButton
+              name="Join game"
+              handleClick={() => {
+                navigate('/');
+              }}
+              width="370px"
+            />
+          </div>
+          <div className="vertical-line" />
+          <div className="create-game">
+            <GreenButton
+              name="Create game"
+              handleClick={() => {
+                navigate('/creategame');
+              }}
+              width="370px"
+            />
+          </div>
+        </div>
+        <div className="play-description-container">
+          <div className="play-description">
+            <p>Join someone else’s room</p>
+          </div>
+          <div className="play-description">
+            <p>Create a room to wait for another player</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

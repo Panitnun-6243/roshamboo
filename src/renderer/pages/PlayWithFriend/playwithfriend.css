@@ -1,0 +1,50 @@
+.pwf-container{
+  background-color: #FCF6FF;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.room-code-title{
+  font-size: 40px;
+  align-self: flex-start;
+}
+.play-option-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.join-game{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 30px;
+}
+.create-game{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.play-description-container{
+  display: flex;
+  flex-direction: row;
+}
+.play-description{
+  width: 50vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.play-description p{
+  color: #3C0B53;
+  opacity: 0.3;
+}
+.vertical-line{
+  border-left: 0.8px solid #FFB7FF;
+  height: 300px;
+  align-self: center;
+}
