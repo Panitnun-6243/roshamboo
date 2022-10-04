@@ -1,0 +1,17 @@
+.purple-button{
+  background-color: #FFB7FF;
+  width: 185px;
+  height: 90px;
+  text-align: center;
+  border: solid white 5px;
+  font-size: 30px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  transition: transform .2s;
+  font-family: 'Acme', sans-serif;
+}
+.purple-button:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}

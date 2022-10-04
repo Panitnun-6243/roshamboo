@@ -3,16 +3,18 @@
   height: 100vh;
   background-color: #826AED;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  row-gap: 120px;
 }
 .game-title{
   font-weight: 300;
   font-size: 13vw;
   position: relative;
   -webkit-text-fill-color:#000000;
-  -webkit-text-stroke: 10px #C879FF;
+  -webkit-text-stroke: 7px #C879FF;
+  letter-spacing: 4px;
 }
 .game-title-box{
   width: 72vw;
@@ -23,4 +25,10 @@
   align-items: center;
   border-radius: 50px;
   border: 5px solid #000000;
+}
+.button-container{
+  display: flex;
+  flex-direction: row;
+  width: 70vw;
+  justify-content: space-around;
 }
