@@ -1,5 +1,6 @@
 import './playwithfriend.css';
 import { useNavigate } from 'react-router-dom';
+import GreenButton from 'renderer/components/GreenButton/GreenButton';
 
 export default function PlayWithFriend() {
   const navigate = useNavigate();
@@ -19,6 +20,13 @@ export default function PlayWithFriend() {
       <button type="button" onClick={handleTempNext}>
         Next
       </button>
+      <GreenButton
+        name="Create game"
+        handleClick={() => {
+          navigate('/playwithfriend');
+        }}
+        width="370px"
+      />
     </div>
   );
 }
