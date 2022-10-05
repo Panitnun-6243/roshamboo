@@ -1,6 +1,7 @@
 import './playwithfriend.css';
 import { useNavigate } from 'react-router-dom';
 import GreenButton from 'renderer/components/GreenButton/GreenButton';
+import Textfiled from 'renderer/components/Textfield/Textfiled';
 
 export default function PlayWithFriend() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export default function PlayWithFriend() {
         <div className="play-option-container">
           <div className="join-game">
             <div className="room-code-title">Room code:</div>
-            <input type="text" />
+            <Textfiled />
             <GreenButton
               name="Join game"
               handleClick={() => {
