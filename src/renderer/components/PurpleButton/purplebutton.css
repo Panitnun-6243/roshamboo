@@ -1,17 +1,15 @@
-.purple-button{
-  background-color: #FFB7FF;
+.purple-button {
+  background-color: #ffb7ff;
   width: 185px;
   height: 90px;
   text-align: center;
   border: solid white 5px;
   font-size: 30px;
   border-radius: 20px;
-  display: flex;
-  align-items: center;
-  transition: transform .2s;
+  transition: transform 0.2s;
   font-family: 'Acme', sans-serif;
 }
-.purple-button:hover{
+.purple-button:hover {
   cursor: pointer;
   transform: scale(1.1);
 }

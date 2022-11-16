@@ -12,13 +12,7 @@ export default function Home() {
       </div>
       <div className="button-container">
         <PurpleButton
-          name="Play with friend"
-          handleClick={() => {
-            navigate('/playwithfriend');
-          }}
-        />
-        <PurpleButton
-          name="Play with computer"
+          name="Play"
           handleClick={() => {
             navigate('/playwithfriend');
           }}
