@@ -9,7 +9,7 @@ type NavIcon = {
 
 export default function Navbar({ color, handleClick }: NavIcon) {
   return (
-    <div className="navbar-contrainer" style={{ background: `${color}` }}>
+    <div className="navbar-container" style={{ background: `${color}` }}>
       <div className="navbar-icon">
         <FontAwesomeIcon icon={faArrowLeft} onClick={handleClick} />
       </div>

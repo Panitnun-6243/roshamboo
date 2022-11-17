@@ -1,0 +1,61 @@
+canvas {
+  display: none;
+}
+
+.app-container {
+  background-color: #fcf6ff;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}
+
+.stream-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.stream-state {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.opponent .stream-state {
+  flex-direction: row-reverse;
+}
+
+.opponent img {
+  width: 600px;
+  height: 450px;
+  border: 1px solid black;
+}
+
+.camera-stream {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.status-container {
+  width: 100%;
+  padding: 48px 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}

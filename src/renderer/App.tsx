@@ -6,17 +6,18 @@ import Playground from './pages/Playground/Playground';
 import CreateGame from './pages/CreateGame/CreateGame';
 import WaitingLobby from './pages/WaitingLobby/WaitingLobby';
 import PlayerLeft from './pages/PlayerLeft/PlayerLeft';
+import Settings from './pages/Settings/Settings';
 import './App.css';
 
 export default function App() {
-  const onSocketConnected = (sid: string) => console.log(sid);
-  const service: RoshambooService = new RoshambooService(onSocketConnected);
+  const service: RoshambooService = new RoshambooService();
 
   return (
     <ServiceContext.Provider value={{ service }}>
       <Router>
         <Routes>
           <Route index element={<Home />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="/playwithfriend" element={<PlayWithFriend />} />
           <Route path="/creategame" element={<CreateGame />} />
           <Route path="/waitinglobby" element={<WaitingLobby />} />

@@ -7,6 +7,9 @@ module.exports = {
     // Since React 17 and typescript 4.1 you can safely disable the rule
     'react/react-in-jsx-scope': 'off',
     'no-underscore-dangle': 'off',
+    'jsx-a11y/media-has-caption': 'off',
+    'promise/always-return': 'off',
+    'react-hooks/exhaustive-deps': 'off',
   },
   parserOptions: {
     ecmaVersion: 2020,

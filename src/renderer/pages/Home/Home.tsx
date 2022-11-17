@@ -1,6 +1,8 @@
-import './home.css';
-import PurpleButton from 'renderer/components/PurpleButton/PurpleButton';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PurpleButton from 'renderer/components/PurpleButton/PurpleButton';
+import { faGear } from '@fortawesome/free-solid-svg-icons';
+import './home.css';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -13,10 +15,11 @@ export default function Home() {
       <div className="button-container">
         <PurpleButton
           name="Play"
-          handleClick={() => {
-            navigate('/playwithfriend');
-          }}
+          handleClick={() => navigate('/playwithfriend')}
         />
+      </div>
+      <div className="settings-container">
+        <FontAwesomeIcon icon={faGear} onClick={() => navigate('/settings')} />
       </div>
     </div>
   );

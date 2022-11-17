@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ServiceContext from 'main/service';
 import GreenButton from 'renderer/components/GreenButton/GreenButton';
@@ -12,11 +12,7 @@ import './playwithfriend.css';
 export default function PlayWithFriend() {
   const navigate = useNavigate();
   const rs = useContext(ServiceContext);
-  let roomCode = '';
-
-  const setRoomCode = (code: string) => {
-    roomCode = code;
-  };
+  const [roomCode, setRoomCode] = useState('');
   const joinRoom = () => rs.service.joinRoom(roomCode);
 
   rs.service.onJoinRoom = () => navigate('/playground');
@@ -34,7 +30,7 @@ export default function PlayWithFriend() {
           <div className="play-option-container">
             <div className="join-game">
               <div className="room-code-title">Room code:</div>
-              <Textfield onChange={setRoomCode} />
+              <Textfield value={roomCode} onChange={setRoomCode} />
               <GreenButton
                 name="Join game"
                 handleClick={joinRoom}

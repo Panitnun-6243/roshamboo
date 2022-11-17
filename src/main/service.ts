@@ -2,7 +2,11 @@ import React from 'react';
 import { io, Socket } from 'socket.io-client';
 
 export class RoshambooService {
-  private endpoint: string = 'ws://localhost:8080';
+  private _endpoint: string = 'ws://localhost:8080';
+
+  public get endpoint(): string {
+    return this._endpoint;
+  }
 
   private socket: Socket;
 
@@ -18,6 +22,8 @@ export class RoshambooService {
     return this._isLeavingRoom;
   }
 
+  socketId!: string;
+
   onJoinRoom!: () => void;
 
   onLeaveRoom!: () => void;
@@ -30,11 +36,17 @@ export class RoshambooService {
 
   onRoundEnd!: () => void;
 
-  constructor(onConnected: (sid: string) => void) {
-    this.socket = io(this.endpoint);
+  onStream!: (data: any) => void;
+
+  constructor(onConnected?: (sid: string) => void, endpoint?: string) {
+    if (typeof endpoint !== 'undefined') {
+      this._endpoint = endpoint;
+    }
+    this.socket = io(this._endpoint);
     this.socket.on('connect', () => {
-      onConnected(this.socket.id);
+      onConnected?.call(this, this.socket.id);
       this.bindListeners();
+      this.socketId = this.socket.id;
     });
   }
 
@@ -44,15 +56,15 @@ export class RoshambooService {
       this._isLeavingRoom = false;
       this.onJoinRoom();
     });
-    this.socket.on('leave-room', () => this.onLeaveRoom());
+    this.socket.on('leave-room', () => {
+      this.onLeaveRoom();
+      this.onStream = () => {};
+    });
     this.socket.on('end-room', this.onEndRoom);
     this.socket.on('reset-room', this.onResetRoom);
     this.socket.on('round-start', this.onRoundStart);
     this.socket.on('round-end', this.onRoundEnd);
-  }
-
-  setEndpoint(endpoint: string): void {
-    this.endpoint = endpoint;
+    this.socket.on('stream', (data) => this.onStream(data));
   }
 
   createRoom(rounds: number): void {
@@ -66,6 +78,10 @@ export class RoshambooService {
   leaveRoom(): void {
     this._isLeavingRoom = true;
     this.socket.emit('leave-room', '');
+  }
+
+  stream(data: any): void {
+    this.socket.emit('stream', data);
   }
 }
 
