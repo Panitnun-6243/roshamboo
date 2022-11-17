@@ -1,22 +1,46 @@
-import './creategame.css';
+import { ChangeEvent, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ServiceContext from 'main/service';
+import './creategame.css';
 
 export default function CreateGame() {
   const navigate = useNavigate();
-  // temporary button for change page, you can delete it
-  function handleClick() {
-    navigate('/playwithfriend');
+  const rs = useContext(ServiceContext);
+  const [rounds, setRounds] = useState(5);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setRounds(parseInt(event.target.value, 10));
+  };
+
+  function createRoom() {
+    rs.service.createRoom(rounds);
   }
-  function handleTempNext() {
-    navigate('/playground');
-  }
+
+  rs.service.onJoinRoom = () => navigate('/waitinglobby');
+
+  const getBackgroundSize = () => {
+    return {
+      backgroundSize: `${((rounds - 3) * 100) / 6}% 100%`,
+    };
+  };
+
   return (
     <div>
       <p>CreateGame</p>
-      <button type="button" onClick={handleClick}>
+      <input
+        type="range"
+        min="3"
+        max="9"
+        value={rounds}
+        step="2"
+        onChange={handleChange}
+        style={getBackgroundSize()}
+      />
+      Best of {rounds}
+      <button type="button" onClick={() => navigate('/playwithfriend')}>
         Back
       </button>
-      <button type="button" onClick={handleTempNext}>
+      <button type="button" onClick={createRoom}>
         Next
       </button>
     </div>

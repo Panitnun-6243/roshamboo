@@ -1,14 +1,25 @@
-import './playwithfriend.css';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ServiceContext from 'main/service';
 import GreenButton from 'renderer/components/GreenButton/GreenButton';
-import Textfiled from 'renderer/components/Textfield/Textfiled';
+import Textfield from 'renderer/components/Textfield/Textfield';
 import Navbar from 'renderer/components/Navbar/Navbar';
+import './playwithfriend.css';
 
 // pink: linear-gradient(90.46deg, #ffb7ff 0%, #caff8a 100%)
 // purple: linear-gradient(90.46deg, #C879FF 0%, #FFB7FF 100%)
 
 export default function PlayWithFriend() {
   const navigate = useNavigate();
+  const rs = useContext(ServiceContext);
+  let roomCode = '';
+
+  const setRoomCode = (code: string) => {
+    roomCode = code;
+  };
+  const joinRoom = () => rs.service.joinRoom(roomCode);
+
+  rs.service.onJoinRoom = () => navigate('/playground');
 
   return (
     <div>
@@ -23,12 +34,10 @@ export default function PlayWithFriend() {
           <div className="play-option-container">
             <div className="join-game">
               <div className="room-code-title">Room code:</div>
-              <Textfiled />
+              <Textfield onChange={setRoomCode} />
               <GreenButton
                 name="Join game"
-                handleClick={() => {
-                  navigate('/');
-                }}
+                handleClick={joinRoom}
                 width="370px"
               />
             </div>
@@ -36,9 +45,7 @@ export default function PlayWithFriend() {
             <div className="create-game">
               <GreenButton
                 name="Create game"
-                handleClick={() => {
-                  navigate('/creategame');
-                }}
+                handleClick={() => navigate('/creategame')}
                 width="370px"
               />
             </div>
