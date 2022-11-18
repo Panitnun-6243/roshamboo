@@ -10,6 +10,7 @@ module.exports = {
     'jsx-a11y/media-has-caption': 'off',
     'promise/always-return': 'off',
     'react-hooks/exhaustive-deps': 'off',
+    'react/no-array-index-key': 'off',
   },
   parserOptions: {
     ecmaVersion: 2020,

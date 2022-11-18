@@ -14,6 +14,7 @@ export default function WaitingLobby() {
 
   rs.service.onJoinRoom = () => navigate('/playground');
   rs.service.onLeaveRoom = () => {};
+  rs.service.isHost = true;
 
   return (
     <div>

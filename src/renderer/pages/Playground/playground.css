@@ -8,7 +8,7 @@ canvas {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: nowrap;
   box-sizing: border-box;
 }
@@ -37,7 +37,7 @@ canvas {
 
 .opponent img {
   width: 600px;
-  height: 450px;
+  height: 400px;
   border: 1px solid black;
 }
 
@@ -52,10 +52,11 @@ canvas {
 
 .status-container {
   width: 100%;
-  padding: 48px 0px;
+  height: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }

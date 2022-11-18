@@ -8,6 +8,16 @@ interface RoshambooServiceSettings {
   streamRate?: number;
 }
 
+export interface Move {
+  class: number;
+  confidence: number;
+}
+
+export interface Result {
+  isWon: boolean;
+  score: number[];
+}
+
 export class RoshambooService {
   private _endpoint: string;
 
@@ -47,7 +57,15 @@ export class RoshambooService {
     return this._isLeavingRoom;
   }
 
-  socketId!: string;
+  private _socketId!: string;
+
+  public get socketId(): string {
+    return this._socketId;
+  }
+
+  isHost: boolean = false;
+
+  result!: Result;
 
   onJoinRoom!: () => void;
 
@@ -59,7 +77,7 @@ export class RoshambooService {
 
   onRoundStart!: () => void;
 
-  onRoundEnd!: () => void;
+  onRoundEnd!: (data: Move[]) => void;
 
   onStream!: (data: any) => void;
 
@@ -75,7 +93,7 @@ export class RoshambooService {
     this.socket.on('connect', () => {
       onConnected?.call(this, this.socket.id);
       this.bindListeners();
-      this.socketId = this.socket.id;
+      this._socketId = this.socket.id;
     });
   }
 
@@ -88,11 +106,12 @@ export class RoshambooService {
     this.socket.on('leave-room', () => {
       this.onLeaveRoom();
       this.onStream = () => {};
+      this.isHost = false;
     });
-    this.socket.on('end-room', this.onEndRoom);
-    this.socket.on('reset-room', this.onResetRoom);
-    this.socket.on('round-start', this.onRoundStart);
-    this.socket.on('round-end', this.onRoundEnd);
+    this.socket.on('end-room', () => this.onEndRoom());
+    this.socket.on('reset-room', () => this.onResetRoom());
+    this.socket.on('round-start', () => this.onRoundStart());
+    this.socket.on('round-end', (data) => this.onRoundEnd(data));
     this.socket.on('stream', (data) => this.onStream(data));
   }
 
@@ -107,6 +126,18 @@ export class RoshambooService {
   leaveRoom(): void {
     this._isLeavingRoom = true;
     this.socket.emit('leave-room', '');
+  }
+
+  resetRoom(): void {
+    this.socket.emit('reset-room', '');
+  }
+
+  startRound(): void {
+    this.socket.emit('round-start', '');
+  }
+
+  move(base64img: string): void {
+    this.socket.emit('move', base64img);
   }
 
   stream(data: any): void {

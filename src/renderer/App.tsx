@@ -7,6 +7,7 @@ import CreateGame from './pages/CreateGame/CreateGame';
 import WaitingLobby from './pages/WaitingLobby/WaitingLobby';
 import PlayerLeft from './pages/PlayerLeft/PlayerLeft';
 import Settings from './pages/Settings/Settings';
+import ResultPage from './pages/ResultPage/ResultPage';
 import './App.css';
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/creategame" element={<CreateGame />} />
           <Route path="/waitinglobby" element={<WaitingLobby />} />
           <Route path="/playground" element={<Playground />} />
+          <Route path="/result" element={<ResultPage />} />
           <Route path="/playerleft" element={<PlayerLeft />} />
         </Routes>
       </Router>
