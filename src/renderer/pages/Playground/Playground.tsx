@@ -14,7 +14,6 @@ export default function Playground() {
   const rs = useContext(ServiceContext);
   const leaveRoom = () => rs.service.leaveRoom();
   const VIDEO_SIZE = { width: 600, height: 450 };
-  const STREAM_RATE = 200;
   let streamInterval: ReturnType<typeof setInterval>;
 
   const getSnapshot = () => {
@@ -28,7 +27,9 @@ export default function Playground() {
     canvas.height = VIDEO_SIZE.height;
     const ctx = canvas.getContext('2d');
     ctx.drawImage(video, 0, 0, VIDEO_SIZE.width, VIDEO_SIZE.height);
-    return canvas.toDataURL().substr(22);
+    return canvas
+      .toDataURL(rs.service.streamMime, rs.service.streamCompression)
+      .substr(rs.service.streamMime === 'image/png' ? 22 : 23);
   };
 
   const getStream = async () => {
@@ -47,7 +48,7 @@ export default function Playground() {
         }
         streamInterval = setInterval(() => {
           rs.service.stream(getSnapshot());
-        }, STREAM_RATE);
+        }, rs.service.streamRate);
         return stm || new MediaStream();
       })
       .catch((err) => {
@@ -73,7 +74,7 @@ export default function Playground() {
 
   rs.service.onStream = (data) => {
     if (data.sid !== rs.service.socketId) {
-      setImgSrc(`data:image/png;base64,${data.data}`);
+      setImgSrc(`data:${rs.service.streamMime};base64,${data.data}`);
     }
   };
 

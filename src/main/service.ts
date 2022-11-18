@@ -1,11 +1,36 @@
 import React from 'react';
 import { io, Socket } from 'socket.io-client';
 
+interface RoshambooServiceSettings {
+  endpoint?: string;
+  streamMime?: string;
+  streamCompression?: number;
+  streamRate?: number;
+}
+
 export class RoshambooService {
-  private _endpoint: string = 'ws://localhost:8080';
+  private _endpoint: string;
 
   public get endpoint(): string {
     return this._endpoint;
+  }
+
+  private _streamMime: string;
+
+  public get streamMime(): string {
+    return this._streamMime;
+  }
+
+  private _streamCompression: number;
+
+  public get streamCompression(): number {
+    return this._streamCompression;
+  }
+
+  private _streamRate: number;
+
+  public get streamRate(): number {
+    return this._streamRate;
   }
 
   private socket: Socket;
@@ -38,10 +63,14 @@ export class RoshambooService {
 
   onStream!: (data: any) => void;
 
-  constructor(onConnected?: (sid: string) => void, endpoint?: string) {
-    if (typeof endpoint !== 'undefined') {
-      this._endpoint = endpoint;
-    }
+  constructor(
+    onConnected?: (sid: string) => void,
+    settings: RoshambooServiceSettings = {}
+  ) {
+    this._endpoint = settings.endpoint || 'ws://localhost:8080';
+    this._streamMime = settings.streamMime || 'image/jpeg';
+    this._streamCompression = settings.streamCompression || 0.2;
+    this._streamRate = settings.streamRate || 100;
     this.socket = io(this._endpoint);
     this.socket.on('connect', () => {
       onConnected?.call(this, this.socket.id);
