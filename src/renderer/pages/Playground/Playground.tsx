@@ -8,7 +8,7 @@ import './playground.css';
 
 interface StatusProps {
   isHost: boolean;
-  isWon: boolean;
+  isWon: boolean | null;
   countdown: number;
   handleClick: () => void;
 }
@@ -31,15 +31,18 @@ const Status = ({ isHost, isWon, countdown, handleClick }: StatusProps) => {
       </div>
     );
   }
-  return (
-    <div className="status-container">
-      {isWon ? (
-        <div className="round-result">You won!</div>
-      ) : (
-        <div className="round-result">You lost!</div>
-      )}
-    </div>
-  );
+
+  let roundResult;
+
+  if (isWon === null) {
+    roundResult = <div className="round-result">It&rsquo;s a tie...</div>;
+  } else if (isWon === true) {
+    roundResult = <div className="round-result">You won!</div>;
+  } else {
+    roundResult = <div className="round-result">You lost!</div>;
+  }
+
+  return <div className="status-container">{roundResult}</div>;
 };
 
 export default function Playground() {
@@ -268,7 +271,12 @@ export default function Playground() {
       </div>
       <Status
         isHost={rs.service.isHost}
-        isWon={countScore(moves.slice(-1), playerIndex) === 1}
+        isWon={
+          moves.length > 0 &&
+          moves.slice(-1)[0][0].class === moves.slice(-1)[0][1].class
+            ? null
+            : countScore(moves.slice(-1), playerIndex) === 1
+        }
         countdown={countdown}
         handleClick={handleStart}
       />
