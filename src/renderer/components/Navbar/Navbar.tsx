@@ -3,17 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 type NavIcon = {
+  title: string;
   color: string;
   handleClick: () => void;
 };
 
-export default function Navbar({ color, handleClick }: NavIcon) {
+export default function Navbar({ color, handleClick, title }: NavIcon) {
   return (
     <div className="navbar-container" style={{ background: `${color}` }}>
       <div className="navbar-icon">
         <FontAwesomeIcon icon={faArrowLeft} onClick={handleClick} />
       </div>
-      <p>Play with friend</p>
+      <p>{title}</p>
     </div>
   );
 }

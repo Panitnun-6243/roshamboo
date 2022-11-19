@@ -21,6 +21,7 @@ export default function PlayWithFriend() {
     <div>
       <div className="pwf-container">
         <Navbar
+          title="Play with friend"
           color="linear-gradient(90.46deg, #ffb7ff 0%, #caff8a 100%)"
           handleClick={() => {
             navigate('/');

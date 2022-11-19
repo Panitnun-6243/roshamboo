@@ -2,6 +2,8 @@ import { ChangeEvent, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ServiceContext from 'main/service';
 import './creategame.css';
+import GreenButton from 'renderer/components/GreenButton/GreenButton';
+import Navbar from 'renderer/components/Navbar/Navbar';
 
 export default function CreateGame() {
   const navigate = useNavigate();
@@ -26,23 +28,39 @@ export default function CreateGame() {
 
   return (
     <div>
-      <p>CreateGame</p>
-      <input
-        type="range"
-        min="3"
-        max="9"
-        value={rounds}
-        step="2"
-        onChange={handleChange}
-        style={getBackgroundSize()}
+      <Navbar
+        title="Create game"
+        color="linear-gradient(90.46deg, #ffb7ff 0%, #caff8a 100%)"
+        handleClick={() => {
+          navigate('/playwithfriend');
+        }}
       />
-      Best of {rounds}
-      <button type="button" onClick={() => navigate('/playwithfriend')}>
-        Back
-      </button>
-      <button type="button" onClick={createRoom}>
-        Next
-      </button>
+      <div className="cg-container">
+        <div className="round-container">
+          <p className="round-title">Round: &nbsp; </p>
+          <input
+            type="range"
+            min="3"
+            max="9"
+            value={rounds}
+            step="2"
+            onChange={handleChange}
+            style={getBackgroundSize()}
+          />
+        </div>
+        <div className="bor-container">
+          <p className="bo-title">Best of &nbsp; </p>
+          <p className="num-title">{rounds}</p>
+        </div>
+
+        <div className="create-game">
+          <GreenButton
+            name="Create game"
+            handleClick={() => navigate('/creategame')}
+            width="180px"
+          />
+        </div>
+      </div>
     </div>
   );
 }
