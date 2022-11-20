@@ -56,7 +56,8 @@ export default function CreateGame() {
         <div className="create-game">
           <GreenButton
             name="Create game"
-            handleClick={() => navigate('/creategame')}
+            // eslint-disable-next-line react/jsx-no-bind
+            handleClick={createRoom}
             width="180px"
           />
         </div>
