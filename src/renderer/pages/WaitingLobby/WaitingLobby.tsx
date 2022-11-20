@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ServiceContext from 'main/service';
 import './waitinglobby.css';
+import Navbar from 'renderer/components/Navbar/Navbar';
 
 export default function WaitingLobby() {
   const navigate = useNavigate();
@@ -17,12 +18,19 @@ export default function WaitingLobby() {
   rs.service.isHost = true;
 
   return (
-    <div>
-      <p>Waiting</p>
-      <button type="button" onClick={leaveRoom}>
-        Back
-      </button>
-      Room ID: {rs.service.roomId}
+    <div className="waiting-container">
+      <Navbar
+        title="Roshamboo!"
+        color="linear-gradient(90.46deg, #C879FF 0%, #FFB7FF 100%)"
+        handleClick={leaveRoom}
+      />
+      <div className="clipboard-container">
+        <div className="clipboard">
+          <div className="room-code-id">Room code:</div>
+          <div className="room-id">{rs.service.roomId}</div>
+          <p>Waiting for opponent...</p>
+        </div>
+      </div>
     </div>
   );
 }
