@@ -237,7 +237,9 @@ export default function Playground() {
                 .slice()
                 .reverse()
                 .map((move, i) => (
-                  <span key={i}>{getClassSymbol(move[playerIndex].class)}</span>
+                  <span className="emoji" key={i}>
+                    {getClassSymbol(move[playerIndex].class)}
+                  </span>
                 ))}
             </div>
           </div>
@@ -255,7 +257,9 @@ export default function Playground() {
             <h1>Opponent</h1>
             <div className="move-history">
               {moves.map((move, i) => (
-                <span key={i}>{getClassSymbol(move[opponentIndex].class)}</span>
+                <span className="emoji" key={i}>
+                  {getClassSymbol(move[opponentIndex].class)}
+                </span>
               ))}
             </div>
           </div>

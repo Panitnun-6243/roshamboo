@@ -3,7 +3,7 @@ canvas {
 }
 
 .app-container {
-  background-color: #826AED;
+  background-color: #826aed;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -41,10 +41,12 @@ div h3 {
 
 .score {
   color: #ffffff;
+  font-size: 32px;
 }
 
 .move-result {
   color: #ffffff;
+  font-size: 32px;
 }
 
 .opponent .stream-state {
@@ -75,4 +77,8 @@ div h3 {
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+}
+
+.emoji {
+  font-size: 50px;
 }
