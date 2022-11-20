@@ -26,7 +26,7 @@ const Status = ({ isHost, isWon, countdown, handleClick }: StatusProps) => {
         {isHost ? (
           <GreenButton name="Start" handleClick={handleClick} width="200px" />
         ) : (
-          'Waiting for host to start round...'
+          <h3>Waiting for host to start round...</h3>
         )}
       </div>
     );
@@ -224,7 +224,8 @@ export default function Playground() {
   return (
     <div className="app-container">
       <Navbar
-        color="linear-gradient(90.46deg, #ffb7ff 0%, #caff8a 100%)"
+        title="Roshamboo!"
+        color="linear-gradient(90.46deg, #C879FF 0%, #FFB7FF 100%)"
         handleClick={leaveRoom}
       />
       <div className="stream-container">

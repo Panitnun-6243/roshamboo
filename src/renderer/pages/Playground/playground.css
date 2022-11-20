@@ -3,7 +3,7 @@ canvas {
 }
 
 .app-container {
-  background-color: #fcf6ff;
+  background-color: #826AED;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -29,6 +29,22 @@ canvas {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+}
+
+.stream-state h1 {
+  color: #ffffff;
+}
+
+div h3 {
+  color: #ffffff;
+}
+
+.score {
+  color: #ffffff;
+}
+
+.move-result {
+  color: #ffffff;
 }
 
 .opponent .stream-state {
