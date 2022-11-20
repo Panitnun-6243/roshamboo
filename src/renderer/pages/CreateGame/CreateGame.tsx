@@ -27,7 +27,7 @@ export default function CreateGame() {
   };
 
   return (
-    <div>
+    <div className="bg">
       <Navbar
         title="Create game"
         color="linear-gradient(90.46deg, #ffb7ff 0%, #caff8a 100%)"
@@ -46,6 +46,7 @@ export default function CreateGame() {
             step="2"
             onChange={handleChange}
             style={getBackgroundSize()}
+            className="round-slider"
           />
         </div>
         <div className="bor-container">

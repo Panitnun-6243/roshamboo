@@ -1,61 +1,51 @@
 .cg-container {
-  background-color: #FCF6FF;
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-
-
-
-
 }
 
-.round-title{
-
-    color: #ffffff;
-    font-size: 40px;
-
-
+.round-title {
+  color: #ffffff;
+  font-size: 40px;
 }
-.round-container{
-  background-color: #826AED;
-    width: 50vw;
-    height: 10vh;
-    justify-content: center;
-    display: flex;
+
+.round-container {
+  background-color: #826aed;
+  width: 50vw;
+  height: 10vh;
+  justify-content: center;
+  display: flex;
   align-items: center;
-
-
-        border-radius: 18px;
-
-
-
+  border-radius: 18px;
 }
-input[type='range'] {
+
+.round-slider {
   -webkit-appearance: none;
   appearance: none;
   height: 7px;
-  background: #FCF6FF;
+  background: #fcf6ff;
   border-radius: 5px;
-  background-image: linear-gradient(#FCF6FF, #FCF6FF);
+  background-image: linear-gradient(#fcf6ff, #fcf6ff);
   background-repeat: no-repeat;
 }
 
-input[type='range']::-webkit-slider-thumb {
+.round-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  background: #FCF6FF;
+  background: #3bf4fb;
+  background-image: linear-gradient(133.29deg, #ffb7ff 16.18%, #3bf4fb 100%);
   cursor: pointer;
-  box-shadow: 0 0 2px 0 #FCF6FF;
+  box-shadow: 0 0 2px 0 #fcf6ff;
   transition: background 0.3s ease-in-out;
 }
 
-input[type='range']::-webkit-slider-runnable-track {
+.round-slider::-webkit-slider-runnable-track {
   -webkit-appearance: none;
   appearance: none;
   box-shadow: none;
@@ -63,40 +53,35 @@ input[type='range']::-webkit-slider-runnable-track {
   background: transparent;
 }
 
-input[type='range']::-webkit-slider-thumb:hover {
-  box-shadow: #FCF6FF 0px 0px 0px 8px;
+.round-slider::-webkit-slider-thumb:hover {
+  box-shadow: #ffb7ff44 0px 0px 0px 8px;
 }
 
-input[type='range']::-webkit-slider-thumb:active {
-  box-shadow: #FCF6FF 0px 0px 0px 11px;
+.round-slider::-webkit-slider-thumb:active {
+  box-shadow: #ffb7ff66 0px 0px 0px 11px;
   transition: box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     left 350ms cubic- bezier(0.4, 0, 0.2, 1) 0ms,
     bottom 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.bor-container{
+.bor-container {
   display: flex;
-    flex-direction: row;
-
+  flex-direction: row;
 }
+
 .bo-title {
-
-  color: #3C0B53;
+  color: #3c0b53;
   font-size: 40px;
-
-
 }
-.num-title{
 
-  color: #C879FF;
+.num-title {
+  color: #c879ff;
   font-size: 40px;
-
-
 }
+
 .create-game {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
 }
