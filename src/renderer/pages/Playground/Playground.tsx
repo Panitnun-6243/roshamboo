@@ -270,8 +270,8 @@ export default function Playground() {
                 ? getClassName(moves[moves.length - 1][opponentIndex].class)
                 : '-'}
             </div>
-            <div className="score">{countScore(moves, opponentIndex)}</div>
           </div>
+          <div className="score">{countScore(moves, opponentIndex)}</div>
         </div>
       </div>
       <Status
