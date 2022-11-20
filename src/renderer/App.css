@@ -7,6 +7,35 @@ body {
   overflow: hidden;
 }
 
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
 .bg {
   background-color: #fcf6ff;
+}
+
+.bg.violet {
+  background-color: #826aed;
+}
+
+.won-text {
+  font-size: 2em;
+  color: #caff8a;
+  -webkit-text-stroke: 1px #3c0b53;
+}
+
+.lost-text {
+  font-size: 2em;
+  color: #ed6a6a;
+  -webkit-text-stroke: 1px #3c0b53;
+}
+
+.large-text {
+  font-size: 3em;
+}
+
+.extra-large-text {
+  font-size: 5em;
 }

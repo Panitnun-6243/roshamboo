@@ -9,6 +9,7 @@ import PlayerLeft from './pages/PlayerLeft/PlayerLeft';
 import Settings from './pages/Settings/Settings';
 import ResultPage from './pages/ResultPage/ResultPage';
 import './App.css';
+import './flex.css';
 
 export default function App() {
   const service: RoshambooService = new RoshambooService();
