@@ -32,6 +32,10 @@ body {
   -webkit-text-stroke: 1px #3c0b53;
 }
 
+.white-text {
+  color: #fcf6ff;
+}
+
 .large-text {
   font-size: 3em;
 }

@@ -53,6 +53,14 @@ div h3 {
   flex-direction: row-reverse;
 }
 
+.move-history {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .opponent img {
   width: 600px;
   height: 400px;
@@ -94,4 +102,30 @@ div h3 {
 video {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
+}
+
+img {
+  border: none;
+}
+
+.text-color-animation {
+  animation: text-color-animation 1s infinite alternate-reverse;
+}
+
+@keyframes text-color-animation {
+  0% {
+    color: #826aed;
+  }
+  25% {
+    color: #c879ff;
+  }
+  50% {
+    color: #ffb7ff;
+  }
+  75% {
+    color: #3bf4fb;
+  }
+  100% {
+    color: #caff8a;
+  }
 }

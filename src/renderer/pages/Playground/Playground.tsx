@@ -15,14 +15,22 @@ interface StatusProps {
 
 const Status = ({ isHost, isWon, countdown, handleClick }: StatusProps) => {
   if (countdown > 0) {
-    return <div className="status-container">{countdown}</div>;
+    return (
+      <div className="status-container extra-large-text text-color-animation">
+        {countdown}
+      </div>
+    );
   }
   if (countdown === 0) {
-    return <div className="status-container">Processing...</div>;
+    return (
+      <div className="status-container large-text white-text">
+        Processing...
+      </div>
+    );
   }
   if (countdown === -1) {
     return (
-      <div className="status-container">
+      <div className="status-container white-text">
         {isHost ? (
           <GreenButton name="Start" handleClick={handleClick} width="200px" />
         ) : (
@@ -35,11 +43,13 @@ const Status = ({ isHost, isWon, countdown, handleClick }: StatusProps) => {
   let roundResult;
 
   if (isWon === null) {
-    roundResult = <div className="round-result">It&rsquo;s a tie...</div>;
+    roundResult = (
+      <div className="large-text white-text">It&rsquo;s a tie...</div>
+    );
   } else if (isWon === true) {
-    roundResult = <div className="round-result">You won!</div>;
+    roundResult = <div className="won-text large-text">You won!</div>;
   } else {
-    roundResult = <div className="round-result">You lost!</div>;
+    roundResult = <div className="lost-text large-text">You lost!</div>;
   }
 
   return <div className="status-container">{roundResult}</div>;
